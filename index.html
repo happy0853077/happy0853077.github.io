@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var getstr = window.location.search;
+      var param = new URLSearchParams(getstr);
+      var paramurl = param.get('fileurl');
+      var decodedurl = decodeURIComponent(paramurl);
+      window.location.replace(decodedurl)
+    </script>
+  </head>
+</html>

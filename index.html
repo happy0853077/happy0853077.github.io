@@ -2,11 +2,11 @@
 <html>
   <head>
     <script>
-      var getstr = window.location.search;
-      var param = new URLSearchParams(getstr);
-      var paramurl = param.get('fileurl');
-      var decodedurl = decodeURIComponent(paramurl);
-      window.location.replace(decodedurl)
+      const param = new URLSearchParams(window.location.search);
+      const fileurl = param.get('fileurl');
+      if (fileurl) {
+        window.location.replace(decodeURIComponent(paramurl));
+      }
     </script>
   </head>
 </html>

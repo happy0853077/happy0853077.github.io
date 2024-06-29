@@ -1,0 +1,39 @@
+name: Update APT Repository
+
+on:
+  push:
+    paths:
+      - "repo/deb/*.deb"
+
+jobs:
+  update-packages:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up
+      run: sudo apt-get update && sudo apt-get install -y dpkg-dev
+
+    - name: Generate Packages
+      run: dpkg-scanpackages -m repo/deb /dev/null > repo/Packages
+
+    - name: Generate Packages.gz
+      run: gzip -9kc repo/Packages > repo/Packages.gz
+
+    - name: Generate Packages.xz
+      run: xz -9kc repo/Packages > repo/Packages.xz
+
+    - name: Generate Packages.bz2
+      run: bzip2 -9k repo/Packages
+
+    - name: Commit
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git add repo/Packages repo/Packages.gz repo/Packages.xz repo/Packages.bz2
+        git commit -m "auto update Packages files"
+        git push
+      env:
+        GH_TOKEN: ${{ secrets.workflow_token }}

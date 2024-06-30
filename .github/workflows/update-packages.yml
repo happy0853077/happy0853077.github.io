@@ -20,7 +20,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y dpkg-dev
 
     - name: Remove old files
-      run: rm -f repo/Packages repo/Packages.xz repo/Packages.gz repo/Packages.bz2
+      run: rm -f repo/Packages repo/Packages.xz repo/Packages.gz repo/Packages.bz2 repo/Packages.lzma
 
     - name: Generate Packages
       run: dpkg-scanpackages -m repo/deb /dev/null > repo/Packages
@@ -33,6 +33,9 @@ jobs:
 
     - name: Generate Packages.bz2
       run: bzip2 -9k repo/Packages
+
+    - name: Generate Packages.lzma
+      run: lzma -9k repo/Packages
 
     - name: Commit
       run: |

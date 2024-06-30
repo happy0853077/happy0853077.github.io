@@ -38,7 +38,7 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add repo/Packages repo/Packages.xz repo/Packages.gz repo/Packages.bz2
+        git add -f repo/Packages repo/Packages.xz repo/Packages.gz repo/Packages.bz2
         git commit -m "auto update Packages files"
         git push
       env:

@@ -1,0 +1,43 @@
+Package: com.Happy0853077.fzo
+Version: 0.0-1
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077
+Depends: uikittools, com.tigisoftware.filza | com.tigisoftware.filza64bit
+Filename: repo/deb/com.Happy0853077.fzo_0.0-1_iphoneos-arm64.deb
+Size: 944
+MD5sum: 084375f02f1dcb26b69aa60e238f3d4d
+SHA1: 693bc56090057b94e6dc3e2202050561b0731724
+SHA256: 5fbe9986e30d3a9b0b75f68a764b754d20fe23457e9472034557a78c6705fa6c
+Section: Terminal_Support
+Priority: optional
+Description: open path in filza
+
+Package: com.Happy0853077.imd
+Version: 0.0.6
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077
+Depends: bash
+Filename: repo/deb/com.Happy0853077.imd_0.0.6_iphoneos-arm64.deb
+Size: 1264
+MD5sum: cf158140f011596edfaedc2ab2943bfc
+SHA1: 1a14f2d2236d249ea131f6d57e612ab9744b653e
+SHA256: 97c6005fad051894770c9621f60bf56facf3a889b6ea35681618dfb4a74a29c4
+Section: Terminal_Support
+Priority: optional
+Description: install latest debs in /var/mobile/Documents
+Name: imd
+
+Package: netskao.3dnetworkfixer-rootless
+Version: 1.1-8
+Architecture: iphoneos-arm64
+Maintainer: Nets
+Installed-Size: 496
+Depends: firmware (>= 15.0), mobilesubstrate
+Filename: repo/deb/netskao.3dnetworkfixer-rootless_1.1-8_iphoneos-arm64.deb
+Size: 116288
+MD5sum: c9a6cf0cea8d0dc0258588f256e49827
+SHA1: 7abc06ec4d53ffd5812d373f579edfc7c36bc3db
+SHA256: 512efa065f3c7c70c5bae6dff05405e0e3fdf50291773363f0dd94a3f3e85787
+Section: Netskao-Tweaks
+Description: 3D desktop menu, quick fix for the app networking permissions, Supports iOS13-iOS15
+

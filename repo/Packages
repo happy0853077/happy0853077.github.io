@@ -1,0 +1,43 @@
+Package: com.Happy0853077.fzo
+Version: 0.0-1
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077
+Depends: uikittools, com.tigisoftware.filza | com.tigisoftware.filza64bit
+Filename: repo/deb/com.Happy0853077.fzo_0.0-1_iphoneos-arm64.deb
+Size: 944
+MD5sum: 084375f02f1dcb26b69aa60e238f3d4d
+SHA1: 693bc56090057b94e6dc3e2202050561b0731724
+SHA256: 5fbe9986e30d3a9b0b75f68a764b754d20fe23457e9472034557a78c6705fa6c
+Section: Terminal_Support
+Priority: optional
+Description: open path in filza
+
+Package: com.Happy0853077.imd
+Version: 0.0.6
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077
+Depends: bash
+Filename: repo/deb/com.Happy0853077.imd_0.0.6_iphoneos-arm64.deb
+Size: 1264
+MD5sum: cf158140f011596edfaedc2ab2943bfc
+SHA1: 1a14f2d2236d249ea131f6d57e612ab9744b653e
+SHA256: 97c6005fad051894770c9621f60bf56facf3a889b6ea35681618dfb4a74a29c4
+Section: Terminal_Support
+Priority: optional
+Description: install latest debs in /var/mobile/Documents
+Name: imd
+
+Package: com.happy0853077.checksize
+Version: 1.0.4
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077
+Depends: awk, coreutils
+Filename: repo/deb/com.happy0853077.checksize_1.0.4_iphoneos-arm64.deb
+Size: 1136
+MD5sum: bfe8778604684c5ba996725009f3dc50
+SHA1: e5e53c0894a413f7a5d5b57cd98a41a7b5bb412b
+SHA256: 51d004b5fe9cac6235fc6dcea2f5a7127001ac89bb9d18f6afdd2e0b54084394
+Section: Terminal_Support
+Priority: optional
+Description: calculate total size of a file or directory
+

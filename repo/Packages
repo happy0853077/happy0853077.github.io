@@ -29,6 +29,20 @@ Name: imd
 
 Package: com.happy0853077.checksize
 Version: 1.0.4
+Architecture: all
+Maintainer: Happy0853077
+Depends: awk, coreutils
+Filename: repo/deb/com.happy0853077.checksize_1.0.4_all.deb
+Size: 1124
+MD5sum: 0bc6ea779995c6b37898768c749394f7
+SHA1: 909c16d1c200a4f2bb46bad950b510919113be18
+SHA256: ff63da7ffb21d2c2eeaaba788050fb21de9b4b351ba9e56159ad0cccd0517556
+Section: Terminal_Support
+Priority: optional
+Description: calculate total size of a file or directory
+
+Package: com.happy0853077.checksize
+Version: 1.0.4
 Architecture: iphoneos-arm64
 Maintainer: Happy0853077
 Depends: awk, coreutils
@@ -40,4 +54,18 @@ SHA256: 51d004b5fe9cac6235fc6dcea2f5a7127001ac89bb9d18f6afdd2e0b54084394
 Section: Terminal_Support
 Priority: optional
 Description: calculate total size of a file or directory
+
+Package: com.happy0853077.u2d
+Version: 1.0.2
+Architecture: all
+Maintainer: Happy0853077
+Depends: coreutils
+Filename: repo/deb/com.happy0853077.u2d_1.0.2_all.deb
+Size: 992
+MD5sum: ff7fb5dbd87f9ea0b1da2a17ebf13436
+SHA1: 3c5784d411c72f3f1b7621a03eca1a7bf97725a7
+SHA256: c0f53972f601ae6a71119f610645b8845867dc2f02ca054053c541412ec1a1ff
+Section: Terminal_Support
+Priority: optional
+Description: unix timestamp to date
 

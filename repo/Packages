@@ -69,3 +69,17 @@ Section: Terminal_Support
 Priority: optional
 Description: unix timestamp to date
 
+Package: uu
+Version: 0.0.3
+Architecture: all
+Maintainer: Happy0853077
+Depends: uuid
+Filename: repo/deb/uu_0.0.3_all.deb
+Size: 840
+MD5sum: 8ef9f28e687408da4a9c0762985271a8
+SHA1: 689fe07e301eb4f77c3b55aaf94be7f81c06ea28
+SHA256: 85dca213af4a43d14bad7e5278af31ef351ca311e21514b82cfd9e249e8fa925
+Section: Terminal_Support
+Priority: optional
+Description: output uuid v4 quickly
+

@@ -55,6 +55,22 @@ Section: Terminal_Support
 Priority: optional
 Description: calculate total size of a file or directory
 
+Package: com.happy0853077.savedeb
+Version: 1.0-3
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: coreutils
+Filename: repo/deb/com.happy0853077.savedeb_1.0-3_iphoneos-arm64.deb
+Size: 1112
+MD5sum: dff1aca6a4db6fb6873fc5cf57717c74
+SHA1: ab0a66985fbba8e6075961bc1494167a32a2ed8d
+SHA256: 7e2b2b2a50fef7981c4ae8012f8b6519dc6f6634ade4c1961856a16e21092ea7
+Section: misc
+Description: save debs in apt cache
+Triggers:
+ interest-noawait /private
+ interest-noawait /var
+
 Package: com.happy0853077.u2d
 Version: 1.0.2
 Architecture: all

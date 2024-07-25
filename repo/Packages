@@ -3,7 +3,7 @@ Version: 0.0-1
 Architecture: iphoneos-arm64
 Maintainer: Happy0853077
 Depends: uikittools, com.tigisoftware.filza | com.tigisoftware.filza64bit
-Filename: repo/deb/com.Happy0853077.fzo_0.0-1_iphoneos-arm64.deb
+Filename: ./deb/com.Happy0853077.fzo_0.0-1_iphoneos-arm64.deb
 Size: 944
 MD5sum: 084375f02f1dcb26b69aa60e238f3d4d
 SHA1: 693bc56090057b94e6dc3e2202050561b0731724
@@ -17,7 +17,7 @@ Version: 0.0.6
 Architecture: iphoneos-arm64
 Maintainer: Happy0853077
 Depends: bash
-Filename: repo/deb/com.Happy0853077.imd_0.0.6_iphoneos-arm64.deb
+Filename: ./deb/com.Happy0853077.imd_0.0.6_iphoneos-arm64.deb
 Size: 1264
 MD5sum: cf158140f011596edfaedc2ab2943bfc
 SHA1: 1a14f2d2236d249ea131f6d57e612ab9744b653e
@@ -32,7 +32,7 @@ Version: 1.0.4
 Architecture: all
 Maintainer: Happy0853077
 Depends: awk, coreutils
-Filename: repo/deb/com.happy0853077.checksize_1.0.4_all.deb
+Filename: ./deb/com.happy0853077.checksize_1.0.4_all.deb
 Size: 1124
 MD5sum: 0bc6ea779995c6b37898768c749394f7
 SHA1: 909c16d1c200a4f2bb46bad950b510919113be18
@@ -46,7 +46,7 @@ Version: 1.0.4
 Architecture: iphoneos-arm64
 Maintainer: Happy0853077
 Depends: awk, coreutils
-Filename: repo/deb/com.happy0853077.checksize_1.0.4_iphoneos-arm64.deb
+Filename: ./deb/com.happy0853077.checksize_1.0.4_iphoneos-arm64.deb
 Size: 1136
 MD5sum: bfe8778604684c5ba996725009f3dc50
 SHA1: e5e53c0894a413f7a5d5b57cd98a41a7b5bb412b
@@ -60,7 +60,7 @@ Version: 1.0-3
 Architecture: iphoneos-arm64
 Maintainer: Happy0853077 <happy08530777@gmail.com>
 Depends: coreutils
-Filename: repo/deb/com.happy0853077.savedeb_1.0-3_iphoneos-arm64.deb
+Filename: ./deb/com.happy0853077.savedeb_1.0-3_iphoneos-arm64.deb
 Size: 1116
 MD5sum: 1915f37606072cbcc61eeedcc8c15d9a
 SHA1: 0bae0b41530e1bcc5fd9e828d82925d427fc7936
@@ -76,7 +76,7 @@ Version: 1.0.2
 Architecture: all
 Maintainer: Happy0853077
 Depends: coreutils
-Filename: repo/deb/com.happy0853077.u2d_1.0.2_all.deb
+Filename: ./deb/com.happy0853077.u2d_1.0.2_all.deb
 Size: 992
 MD5sum: ff7fb5dbd87f9ea0b1da2a17ebf13436
 SHA1: 3c5784d411c72f3f1b7621a03eca1a7bf97725a7
@@ -90,7 +90,7 @@ Version: 0.0.3
 Architecture: all
 Maintainer: Happy0853077
 Depends: uuid
-Filename: repo/deb/uu_0.0.3_all.deb
+Filename: ./deb/uu_0.0.3_all.deb
 Size: 840
 MD5sum: 8ef9f28e687408da4a9c0762985271a8
 SHA1: 689fe07e301eb4f77c3b55aaf94be7f81c06ea28

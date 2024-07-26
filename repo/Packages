@@ -71,6 +71,20 @@ Triggers:
  interest-noawait /private
  interest-noawait /var
 
+Package: com.happy0853077.sdp
+Version: 1.3-0
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: apt, grep, fakeroot
+Filename: ./deb/com.happy0853077.sdp_1.3-0_iphoneos-arm64.deb
+Size: 1180
+MD5sum: 273e5d6bbbff96e8a561e94c6697df5b
+SHA1: e5bb555d01953a9becc3ab3d26c044b828568b18
+SHA256: 9b69b477abbd62c12617f059b8fa3bb06dddd5df33ec58c61937c1cb083efd07
+Section: Terminal_Support
+Priority: optional
+Description: search debian packages easily
+
 Package: com.happy0853077.signent
 Version: 0.1-3
 Architecture: iphoneos-arm64

@@ -1,0 +1,149 @@
+Package: com.Happy0853077.fzo
+Version: 0.0-1
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077
+Depends: uikittools, com.tigisoftware.filza | com.tigisoftware.filza64bit
+Filename: ./deb/com.Happy0853077.fzo_0.0-1_iphoneos-arm64.deb
+Size: 944
+MD5sum: 084375f02f1dcb26b69aa60e238f3d4d
+SHA1: 693bc56090057b94e6dc3e2202050561b0731724
+SHA256: 5fbe9986e30d3a9b0b75f68a764b754d20fe23457e9472034557a78c6705fa6c
+Section: Terminal_Support
+Priority: optional
+Description: open path in filza
+
+Package: com.Happy0853077.imd
+Version: 0.0.6
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077
+Depends: bash
+Filename: ./deb/com.Happy0853077.imd_0.0.6_iphoneos-arm64.deb
+Size: 1264
+MD5sum: cf158140f011596edfaedc2ab2943bfc
+SHA1: 1a14f2d2236d249ea131f6d57e612ab9744b653e
+SHA256: 97c6005fad051894770c9621f60bf56facf3a889b6ea35681618dfb4a74a29c4
+Section: Terminal_Support
+Priority: optional
+Description: install latest debs in /var/mobile/Documents
+Name: imd
+
+Package: com.happy0853077.savedeb
+Version: 1.3-1
+Architecture: iphoneos-arm
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: coreutils
+Filename: ./deb/com.happy0853077.savedeb_1.3-1_iphoneos-arm.deb
+Size: 1232
+MD5sum: aa063383f4e616e7e810f75d42e788b7
+SHA1: b0f2fb3355042120fd40c8d877db9e607d87cfeb
+SHA256: 97c08d1e22026f57d4a32e7869c378fb9ccfcd55278e5464322ef4e6ee668657
+Section: misc
+Description: save debs in apt cache
+Triggers:
+ interest-noawait /Applications
+ interest-noawait /dev
+ interest-noawait /bin
+ interest-noawait /sbin
+ interest-noawait /usr
+ interest-noawait /private
+ interest-noawait /var
+ interest-noawait /System
+ interest-noawait /Library
+ interest-noawait /etc
+
+Package: com.happy0853077.savedeb
+Version: 1.3-1
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: coreutils
+Filename: ./deb/com.happy0853077.savedeb_1.3-1_iphoneos-arm64.deb
+Size: 1236
+MD5sum: 9522883c6cd0802cd1f36693b214d0e1
+SHA1: 90f577179cc689db2831fb480c2b05f4ad28b851
+SHA256: 43b3e6c1d6adf9cb1887169de1392dbc22ca5ac2ddc69dd4616442664329ff0d
+Section: misc
+Description: save debs in apt cache
+Triggers:
+ interest-noawait /Applications
+ interest-noawait /dev
+ interest-noawait /bin
+ interest-noawait /sbin
+ interest-noawait /usr
+ interest-noawait /private
+ interest-noawait /var
+ interest-noawait /System
+ interest-noawait /Library
+ interest-noawait /etc
+
+Package: com.happy0853077.sdp
+Version: 1.3-0
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: apt, grep, fakeroot
+Filename: ./deb/com.happy0853077.sdp_1.3-0_iphoneos-arm64.deb
+Size: 1180
+MD5sum: 273e5d6bbbff96e8a561e94c6697df5b
+SHA1: e5bb555d01953a9becc3ab3d26c044b828568b18
+SHA256: 9b69b477abbd62c12617f059b8fa3bb06dddd5df33ec58c61937c1cb083efd07
+Section: Terminal_Support
+Priority: optional
+Description: search debian packages easily
+
+Package: com.happy0853077.signent
+Version: 0.1-3
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: ldid
+Filename: ./deb/com.happy0853077.signent_0.1-3_iphoneos-arm64.deb
+Size: 2776
+MD5sum: 77b3396ab2abf34f7489e20d142bc52e
+SHA1: 7c0534dd9e9d0e555078763885ff0eba5b9fa807
+SHA256: ae2c7a8c15a516afe12d6d15e6abc1654ba77e95188e817e3c26ca6f503032a4
+Section: Terminal_Support
+Priority: optional
+Description: add basic entitlements to machO files with ldid
+
+Package: com.happy0853077.u2d
+Version: 1.0.2
+Architecture: all
+Maintainer: Happy0853077
+Depends: coreutils
+Filename: ./deb/com.happy0853077.u2d_1.0.2_all.deb
+Size: 992
+MD5sum: ff7fb5dbd87f9ea0b1da2a17ebf13436
+SHA1: 3c5784d411c72f3f1b7621a03eca1a7bf97725a7
+SHA256: c0f53972f601ae6a71119f610645b8845867dc2f02ca054053c541412ec1a1ff
+Section: Terminal_Support
+Priority: optional
+Description: unix timestamp to date
+
+Package: com.nahtedetihw.closeall
+Version: 1.0-fixed
+Architecture: iphoneos-arm64
+Maintainer: Ethan Whited, Happy0853077
+Installed-Size: 208
+Filename: ./deb/com.nahtedetihw.closeall_1.0-fixed_iphoneos-arm64.deb
+Size: 21868
+MD5sum: b7d3ae3effb50ecddac42591915da38f
+SHA1: 4ec1416f8d80438ac4edc91b720ff5f1a53d584d
+SHA256: bf5a7a23cffd0f9a2ce0357b547db3a7df2ffd14b14e17bd49e7ae6af1a06bb9
+Section: Tweaks
+Description: An awesome MobileSubstrate tweak!
+ fixed the issue where the package can't be installed if the real path of /var/jb/var/mobile/Library/Preferences is /var/mobile/Library/Preferences
+Author: Ethan Whited
+Name: CloseAll
+
+Package: uu
+Version: 0.0.3
+Architecture: all
+Maintainer: Happy0853077
+Depends: uuid
+Filename: ./deb/uu_0.0.3_all.deb
+Size: 840
+MD5sum: 8ef9f28e687408da4a9c0762985271a8
+SHA1: 689fe07e301eb4f77c3b55aaf94be7f81c06ea28
+SHA256: 85dca213af4a43d14bad7e5278af31ef351ca311e21514b82cfd9e249e8fa925
+Section: Terminal_Support
+Priority: optional
+Description: output uuid v4 quickly
+

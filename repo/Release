@@ -1,0 +1,35 @@
+Architectures: iphoneos-arm64
+Components: main
+Date: Mon, 29 Jul 2024 16:48:26 +0000
+Description: self-use repo
+Label: Happy0853077's repo
+Origin: Happy0853077's repo
+Suite: stable
+MD5Sum:
+ 99ca30fd05c5b98bc444313e2666dc9f             4715 Packages
+ 84e7b1a7ba963b4f2de0ac8c878a0a8b             1855 Packages.bz2
+ 6b80b1e154aa272b195e55a1ef5497db             1729 Packages.gz
+ a2dfc982ca53318ddb77e6d2d6c8e856             1685 Packages.lzma
+ 7b93536fbe6f3846dc068e808b66ddac             1732 Packages.xz
+ 043cc98a91da3d3f481d43d534a31274              181 Release
+SHA1:
+ 455e6b0592ddbf32c522cd107f9792a6364fd232             4715 Packages
+ 80a03861368aeb80a1c7c62c9d943d17fbc90cdf             1855 Packages.bz2
+ 3e219b2718d53aa7ca02cc6b455397eed18b3634             1729 Packages.gz
+ e0741af24e9aee69d7a5f912417e833589e8f3a8             1685 Packages.lzma
+ 635f3d54fbebd82ebba4e2ee0eeb8539d3bf5feb             1732 Packages.xz
+ ac7bafd87db2f3bca8938a2602467b3682aed32e              181 Release
+SHA256:
+ 57ee9c5b45c6a3d13101b56df3b73be9a887d406753aaf36d79b7d33e0924c75             4715 Packages
+ 4aaa77c8b5c1a2289ee098c54054e29720b71dadbae33a3cbf48f41ee392b4d1             1855 Packages.bz2
+ 440be612b40e095f209fefb143fa28cf4f4636b8564ad6eab0211f750b5e4d1a             1729 Packages.gz
+ 933cba2005524137770243ba01ac0d3c064850fd2569e6d6b73c82394120fbd9             1685 Packages.lzma
+ a496bec6c9441b2a38599e49e28364f36856e46f15ad1708252bf28ced4d5a54             1732 Packages.xz
+ 727ceeebc98de6f1595c0a541687d8fe9f49012bff556e2ed482b71602e8e1db              181 Release
+SHA512:
+ 2137e7e7522312812ef8092ea7622d4f6a78f78bc4344d6913535f66f0911252f067130f9050bffbcaeb67d64251cc6d95bc8f552d83f64bb9f2e0f39eefb06b             4715 Packages
+ 3a3c623279f1d4ee2ad34e0faa2ff0673e13e579fa2ecc8b6726bb32e72b103a09778acb0ad1b40d334df81b475b73366870991b6790c1fa7eb028851dbc907d             1855 Packages.bz2
+ 9f89c2ef3df9f5b550a20dff2814340415e94adf2b50587ebb805640e850bb9ffe72a87a15a8c68c98a83c01c925a15672a4cecf402334087f12faded2cccaaa             1729 Packages.gz
+ 60fb79a2cce22edf64d38f164cd3216d06baac9f2c963abb4efed057d99ee245b561cbdd296b5be16909bcb12b3be28d0ea13f96c3f5015c3f6348838f95ea8e             1685 Packages.lzma
+ 6960fef295c59a0a7d1489b9ba4bc2fec3eda8e62534c9211670826c32eadb33e92933281ea6f4d363dc1539cc58ecb9512f77d8e1161c5d99d9bfa00de0c830             1732 Packages.xz
+ a300b75da6a2cbc17e512bfb3c20bea4a63e05276a8e1d1bf5ec7b5eaf0d3d34fb2746a3c708b699f6c3df1b915f640025eab563754ed4526dd027aebded0bf5              181 Release

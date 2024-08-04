@@ -29,22 +29,6 @@ Name: imd
 
 Package: com.happy0853077.cpps
 Version: 1.1-0
-Architecture: iphoneos-arm
-Maintainer: Happy0853077 <happy08530777@gmail.com>
-Depends: clang, ldid
-Filename: ./deb/com.happy0853077.cpps_1.1-0_iphoneos-arm.deb
-Size: 14368
-MD5sum: 573a97bbc94f1e1a0a8d0f52759e4768
-SHA1: edb989e6b177004882b682de8372d976be1cf75c
-SHA256: 79d97a2c1555a9b83b01a3138cf2f670107528ede70502f9ceb353e9ae6ec513
-Section: Terminal_Support
-Priority: optional
-Description: conveniently compile and sign
- cpps is a command line tool to compile and sign your source code
- it will automatically choose proper compiler and sign with ldid
-
-Package: com.happy0853077.cpps
-Version: 1.1-0
 Architecture: iphoneos-arm64
 Maintainer: Happy0853077 <happy08530777@gmail.com>
 Depends: clang, ldid
@@ -59,29 +43,21 @@ Description: conveniently compile and sign
  cpps is a command line tool to compile and sign your source code
  it will automatically choose proper compiler and sign with ldid
 
-Package: com.happy0853077.savedeb
-Version: 1.3-1
-Architecture: iphoneos-arm
+Package: com.happy0853077.cpps
+Version: 1.2-0
+Architecture: iphoneos-arm64
 Maintainer: Happy0853077 <happy08530777@gmail.com>
-Depends: coreutils
-Filename: ./deb/com.happy0853077.savedeb_1.3-1_iphoneos-arm.deb
-Size: 1232
-MD5sum: aa063383f4e616e7e810f75d42e788b7
-SHA1: b0f2fb3355042120fd40c8d877db9e607d87cfeb
-SHA256: 97c08d1e22026f57d4a32e7869c378fb9ccfcd55278e5464322ef4e6ee668657
-Section: misc
-Description: save debs in apt cache
-Triggers:
- interest-noawait /Applications
- interest-noawait /dev
- interest-noawait /bin
- interest-noawait /sbin
- interest-noawait /usr
- interest-noawait /private
- interest-noawait /var
- interest-noawait /System
- interest-noawait /Library
- interest-noawait /etc
+Depends: clang, ldid
+Filename: ./deb/com.happy0853077.cpps_1.2-0_iphoneos-arm64.deb
+Size: 14376
+MD5sum: efea747db3876e700bac561787580362
+SHA1: 0e805385fe52cd1a90156d2f42322f53bd7a17af
+SHA256: c6c3771e16308de8f4621380117894a69a9551f5cb58802e2d215c3912727704
+Section: Terminal_Support
+Priority: optional
+Description: conveniently compile and sign
+ cpps is a command line tool to compile and sign your source code
+ it will automatically choose proper compiler and sign with ldid
 
 Package: com.happy0853077.savedeb
 Version: 1.3-1

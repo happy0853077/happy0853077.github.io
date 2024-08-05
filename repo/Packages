@@ -28,22 +28,6 @@ Description: install latest debs in /var/mobile/Documents
 Name: imd
 
 Package: com.happy0853077.cpps
-Version: 1.1-0
-Architecture: iphoneos-arm64
-Maintainer: Happy0853077 <happy08530777@gmail.com>
-Depends: clang, ldid
-Filename: ./deb/com.happy0853077.cpps_1.1-0_iphoneos-arm64.deb
-Size: 14412
-MD5sum: b46d1c1295edd15c30f4c7d601828e97
-SHA1: 013a6657717832ad91f1653d790aa4e9a1cb8553
-SHA256: 5b916797494a7767fe100e4c87459dbaaefeedfc436990b225864c79722f0db6
-Section: Terminal_Support
-Priority: optional
-Description: conveniently compile and sign
- cpps is a command line tool to compile and sign your source code
- it will automatically choose proper compiler and sign with ldid
-
-Package: com.happy0853077.cpps
 Version: 1.2-0
 Architecture: iphoneos-arm64
 Maintainer: Happy0853077 <happy08530777@gmail.com>
@@ -60,14 +44,14 @@ Description: conveniently compile and sign
  it will automatically choose proper compiler and sign with ldid
 
 Package: com.happy0853077.pbk
-Version: 1.0-0
+Version: 1.1-2
 Architecture: iphoneos-arm64
 Maintainer: Happy0853077 <happy08530777@gmail.com>
-Filename: ./deb/com.happy0853077.pbk_1.0-0_iphoneos-arm64.deb
-Size: 13644
-MD5sum: ec8b2d37a52ba815120ca23525fc45fe
-SHA1: 6838e1b04aac114a51898f87ecba76576fef32dc
-SHA256: 5a44d37f9d69dadf593a708c3220631b3755cac790aebd20ba69fda786bfe179
+Filename: ./deb/com.happy0853077.pbk_1.1-2_iphoneos-arm64.deb
+Size: 14044
+MD5sum: 192d91f2ebd70ff3c328d852d097336d
+SHA1: ab2692887f5549a13e6215d931e3f1b39a2cfab1
+SHA256: 6605dd0f598d9fccbc390977b1b29bcc218302eada4f5b49d1ab349f92a969e1
 Section: Terminal_Support
 Priority: optional
 Description: pbk is a tool to backup your preferences data in /var/mobile/Library/Preferences and in /var/jb/var/mobile/Library/Preferences

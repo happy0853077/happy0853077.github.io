@@ -43,6 +43,20 @@ Description: conveniently compile and sign
  cpps is a command line tool to compile and sign your source code
  it will automatically choose proper compiler and sign with ldid
 
+Package: com.happy0853077.d2u
+Version: 1.0.2
+Architecture: all
+Maintainer: Happy0853077
+Depends: coreutils
+Filename: ./deb/com.happy0853077.d2u_1.0.2_all.deb
+Size: 1056
+MD5sum: 162b594e05b3389b663b1e33919c86dc
+SHA1: 810ff818a92226db2b2e5fe8821ff1ff7c65e160
+SHA256: d0c77de4e096e6a1d70bd773ef7d6e18de1d4dcdba65e3cbe479713d39977e88
+Section: Terminal_Support
+Priority: optional
+Description: date to unix timestamp
+
 Package: com.happy0853077.pbk
 Version: 1.1-2
 Architecture: iphoneos-arm64

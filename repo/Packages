@@ -57,6 +57,20 @@ Section: Terminal_Support
 Priority: optional
 Description: date to unix timestamp
 
+Package: com.happy0853077.gacp
+Version: 1.1-0
+Architecture: iphoneos-arm64
+Maintainer: happy08530777@gmail.com
+Depends: git
+Filename: ./deb/com.happy0853077.gacp_1.1-0_iphoneos-arm64.deb
+Size: 976
+MD5sum: c9e5bfa647e8f8b09cc726c85e338895
+SHA1: 89fc381ebce8c4aeee04df17a3e45d978016b412
+SHA256: 7d69eaf913097a46a9f18ad875725b9169ff27dc739052c9ffdeed57fa4c5f10
+Section: Terminal_support
+Description: do git add, git commit and git push within one command
+Author: happy0853077
+
 Package: com.happy0853077.mobileassettmp
 Version: 1.0.1
 Architecture: iphoneos-arm64

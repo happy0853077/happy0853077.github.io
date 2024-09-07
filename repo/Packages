@@ -57,6 +57,20 @@ Section: Terminal_Support
 Priority: optional
 Description: date to unix timestamp
 
+Package: com.happy0853077.mobileassettmp
+Version: 1.0.1
+Architecture: iphoneos-arm64
+Maintainer: happy08530777@gmail.com
+Filename: ./deb/com.happy0853077.mobileassettmp_1.0.1_iphoneos-arm64.deb
+Size: 924
+MD5sum: dcffb40cc56cc770388502d34990b9f1
+SHA1: a1b9411bbf0950844f9b1e62bdeed02fe3451926
+SHA256: 7032408b7a8c2e2d008cc283cbd28156257c956294178672f6575f36599432eb
+Section: Addons
+Description: 解决系统更新缓存垃圾的问题
+Author: happy0853077
+Name: Reality MobileAsset tmp
+
 Package: com.happy0853077.pbk
 Version: 1.1-2
 Architecture: iphoneos-arm64
@@ -132,6 +146,21 @@ Size: 1180
 MD5sum: 273e5d6bbbff96e8a561e94c6697df5b
 SHA1: e5bb555d01953a9becc3ab3d26c044b828568b18
 SHA256: 9b69b477abbd62c12617f059b8fa3bb06dddd5df33ec58c61937c1cb083efd07
+Section: Terminal_Support
+Priority: optional
+Description: search debian packages easily
+
+Package: com.happy0853077.sdp
+Version: 1.4-1
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: apt, grep
+Recommends: fakeroot
+Filename: ./deb/com.happy0853077.sdp_1.4-1_iphoneos-arm64.deb
+Size: 1240
+MD5sum: c1079a01d2c0786cfcd8b2b977ea717b
+SHA1: aa6ff4ad941c5609da8ef064cc21e833f09412bd
+SHA256: f8ee939bc53957ace6057b3fb6997ee732a640f0d3ca9a9953a2b79a7ef2940d
 Section: Terminal_Support
 Priority: optional
 Description: search debian packages easily

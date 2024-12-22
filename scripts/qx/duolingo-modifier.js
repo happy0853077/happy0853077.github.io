@@ -137,6 +137,6 @@ function main() {
         console.log('failed');
     }
 
-    $notify(ScriptName, '', '成功修改数据');
+    // $notify(ScriptName, '', '成功修改数据');
     $done(tobody(data));
 }

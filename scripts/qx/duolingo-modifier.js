@@ -1,3 +1,6 @@
+// https://happy0853077.github.io/scripts/qx/duolingo-modifier.js
+
+
 const ScriptName = 'duolingo-modifier';
 
 if (typeof $task !== 'undefined') {
@@ -34,15 +37,14 @@ function main() {
     let data = todata();
 
     console.log('enable beta');
-    try {
-        data['userdata']['betaStatus'] = 'ELIGIBLE';
-        data['userdata']['trackingProperties']['beta_enrollment_status'] = 'ELIGIBLE';
-    } catch (e) {
-        console.log('failed');
-    }
+    data['userdata']['betaStatus'] = 'ELIGIBLE';
+    data['userdata']['trackingProperties']['beta_enrollment_status'] = 'ELIGIBLE';
 
     console.log('set premium');
     try {
+        if (data['shopdata']['shopItems'][6]['id'] != 'premium_subscription_twelve_month') {
+            throw new Error('商品数据已变化');
+        }
         let found = false;
         const timestamp = Math.floor(Date.now() / 1000);
         console.log('time: ' + timestamp);
@@ -50,9 +52,9 @@ function main() {
             if (item.id === 'premium_subscription') {
                 console.log('subscription found');
                 item.purchaseDate = timestamp;
-                item.subscriptionInfo.expectedExpiration = timestamp + 1209600;
+                item.subscriptionInfo.expectedExpiration = timestamp + 31536000;
                 item.subscriptionInfo.productId = data['shopdata']['shopItems'][6]['productId'];
-                item.subscriptionInfo.isFreeTrialPeriod = true;
+                item.subscriptionInfo.isFreeTrialPeriod = false;
                 item.subscriptionInfo.isInBillingRetryPeriod = false;
                 item.subscriptionInfo.tier = 'twelve_month';
                 item.subscriptionInfo.type = 'premium';
@@ -68,10 +70,10 @@ function main() {
                 purchaseDate: timestamp,
                 purchasePrice: 11999,
                 subscriptionInfo: {
-                    expectedExpiration: timestamp + 1209600,
-                    isFreeTrialPeriod: true,
+                    expectedExpiration: timestamp + 31536000,
+                    isFreeTrialPeriod: false,
                     isInBillingRetryPeriod: false,
-                    productId: data['shopdata']['shopItems'][6]['productId'], //'com.duolingo.DuolingoMobile.subscription.Premium.TwelveMonth.24Q2MaxWB14D.Trial14.120',
+                    productId: data['shopdata']['shopItems'][6]['productId'],
                     renewer: 'APPLE',
                     renewing: true,
                     tier: 'twelve_month',
@@ -80,7 +82,7 @@ function main() {
                 familyPlanInfo: {
                     ownerId: data['userdata']['id'],
                     secondaryMembers: [],
-                    inviteToken: '1-0000-0000-0000-0000',
+                    inviteToken: '0-0000-0000-0000-0000',
                     pendingInvites: [],
                     pendingInviteSuggestions: []
                 }
@@ -101,22 +103,18 @@ function main() {
     }
 
     console.log('set subscribe');
-    try {
-        data['userdata']['subscriberLevel'] = 'PREMIUM';
-        data['userdata']['trackingProperties']['has_item_premium_subscription'] = true;
-        data['userdata']['trackingProperties']['has_item_live_subscription'] = true;
-        data['userdata']['trackingProperties']['has_item_gold_subscription'] = true;
-    } catch (e) {
-        console.log('failed');
-    }
+    data['userdata']['subscriberLevel'] = 'PREMIUM';
+    data['userdata']['trackingProperties']['has_item_premium_subscription'] = true;
+    data['userdata']['trackingProperties']['has_item_live_subscription'] = true;
+    data['userdata']['trackingProperties']['has_item_gold_subscription'] = true;
 
     console.log('remove restrict');
-    try {
-        data['userdata']['privacySettings'] = [];
-        data['userdata']['trackingProperties']['china_social_restricted'] = false;
-    } catch (e) {
-        console.log('failed');
-    }
+    data['userdata']['privacySettings'] = [];
+    data['userdata']['trackingProperties']['china_social_restricted'] = false;
+
+    console.log('enable heart features');
+    data['userdata']['health']['unlimitedHeartsAvailable'] = true;
+    data['userdata']['health']['eligibleForFreeRefill'] = true;
 
 /*
     console.log('set price');
@@ -130,12 +128,8 @@ function main() {
 */
 
     console.log('get timer boost');
-    try {
-        data['timerBoostConfig']['hasFreeTimerBoost'] = true;
-        data['timerBoostConfig']['timePerBoost'] = 600;
-    } catch (e) {
-        console.log('failed');
-    }
+    data['userdata']['timerBoostConfig']['hasFreeTimerBoost'] = true;
+    data['userdata']['timerBoostConfig']['timePerBoost'] = 600;
 
     // $notify(ScriptName, '', '成功修改数据');
     $done(tobody(data));

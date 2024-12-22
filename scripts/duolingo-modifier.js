@@ -1,6 +1,11 @@
 const ScriptName = 'duolingo-modifier';
 
-main();
+if (typeof $task !== 'undefined') {
+    main();
+} else {
+    console.log('此脚本仅支持Quantumult X，有需要请自行修改');
+    throw new Error('不支持的环境');
+}
 
 
 function todata() {

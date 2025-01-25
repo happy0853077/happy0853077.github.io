@@ -44,7 +44,7 @@
                     canvas.height = img.height;
                     ctx.drawImage(img, 0, 0);
                     imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    originalData = new Uint8ClampedArray(imageData.data);  // 保存原始数据
+                    originalData = new Uint8ClampedArray(imageData.data.slice());  // 保存原始数据
                 };
                 img.src = e.target.result;
             };

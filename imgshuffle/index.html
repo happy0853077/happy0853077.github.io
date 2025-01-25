@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Pixel Shuffle</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Pixel Shuffle</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <br><br>
+    <label for="seed">Enter Seed: </label>
+    <input type="number" id="seed" value="1">
+    <button id="shuffleBtn">Shuffle Pixels</button>
+    <button id="restoreBtn">Restore Pixels</button>
+    <button id="saveBtn">Save Image</button>
+    <br><br>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let imageData = null;
+        let originalData = null;
+
+        document.getElementById('imageInput').addEventListener('change', handleImageUpload);
+        document.getElementById('shuffleBtn').addEventListener('click', shufflePixels);
+        document.getElementById('restoreBtn').addEventListener('click', restorePixels);
+        document.getElementById('saveBtn').addEventListener('click', saveImage);
+
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            const img = new Image();
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                img.onload = function() {
+                    // 设置canvas尺寸为图片尺寸
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                    imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    originalData = new Uint8ClampedArray(imageData.data);  // 保存原始数据
+                };
+                img.src = e.target.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function shufflePixels() {
+            if (!imageData) return;
+
+            const seed = parseInt(document.getElementById('seed').value);
+            const rng = new Math.seedrandom(seed);  // 使用seedrandom库生成伪随机数
+
+            const data = imageData.data;
+            const pixelIndices = Array.from({ length: data.length / 4 }, (_, i) => i);  // 每4个元素代表一个像素
+
+            // 使用伪随机数打乱像素索引
+            for (let i = pixelIndices.length - 1; i > 0; i--) {
+                const j = Math.floor(rng() * (i + 1));
+                [pixelIndices[i], pixelIndices[j]] = [pixelIndices[j], pixelIndices[i]];
+            }
+
+            // 创建一个新的像素数据并将打乱后的数据放入
+            const shuffledData = new Uint8ClampedArray(data.length);
+            for (let i = 0; i < pixelIndices.length; i++) {
+                const idx = pixelIndices[i] * 4;
+                const newIdx = i * 4;
+                shuffledData[newIdx] = data[idx];        // Red
+                shuffledData[newIdx + 1] = data[idx + 1]; // Green
+                shuffledData[newIdx + 2] = data[idx + 2]; // Blue
+                shuffledData[newIdx + 3] = data[idx + 3]; // Alpha
+            }
+
+            // 更新canvas上的图片
+            imageData.data.set(shuffledData);
+            ctx.putImageData(imageData, 0, 0);
+        }
+
+        function restorePixels() {
+            if (originalData) {
+                // 恢复原始数据
+                imageData.data.set(originalData);
+                ctx.putImageData(imageData, 0, 0);
+            }
+        }
+
+        function saveImage() {
+            if (!imageData) return;
+
+            // 将canvas图像转为数据URL
+            const dataURL = canvas.toDataURL('image/png');
+            
+            // 创建一个临时的下载链接
+            const link = document.createElement('a');
+            link.href = dataURL;
+            link.download = 'shuffled_image.png';  // 设置下载的文件名
+            link.click();  // 触发下载
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+</body>
+</html>

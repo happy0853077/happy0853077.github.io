@@ -180,7 +180,7 @@ async function multiUsersSignIn() {
             $.notification.post(
                 scriptName,
                 `签到${tiebaCount}个，成功${success}个，失败${failure}个！`,
-                !!failure > 0 ? content : '🎉恭喜，所有贴吧签到成功！！'
+                !!failure > 0 ? content : '✅恭喜，所有贴吧签到成功！！'
             );
             $.logger.info(`第 ${index + 1} 个Cookie签到完毕`);
         }

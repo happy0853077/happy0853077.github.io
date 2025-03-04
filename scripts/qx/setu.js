@@ -22,19 +22,19 @@ var request = {
     },
 }
 $task.fetch(request).then(response => {
-	let obj = JSON.parse(response.body);
-	console.log(response.body);
-	if(obj.code == 0)
-	{
-		for(i = 0;i<obj.data.length;i++)
-		{
-			let pictureURL = encodeURI(obj.data[i].url);
-			$notify("每日色图", "", "cuttlefish", {"open-url":pictureURL,"media-url":pictureURL}); // Success
-		}
-	}
-	else
-	{
-		 $notify("Title", "Subtitle", reason.error); // Error!
-	}
-     $done();
+    let obj = JSON.parse(response.body);
+    console.log(response.body);
+    if(obj.code == 0)
+    {
+        for(i = 0;i<obj.data.length;i++)
+        {
+            let pictureURL = encodeURI(obj.data[i].url);
+            $notify("每日色图", "", "cuttlefish", {"open-url":pictureURL,"media-url":pictureURL}); // Success
+        }
+    }
+    else
+    {
+        $notify("Title", "Subtitle", reason.error); // Error!
+    }
+    $done();
 })

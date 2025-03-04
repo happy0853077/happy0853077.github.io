@@ -1,0 +1,303 @@
+Package: com.Happy0853077.fzo
+Version: 0.0-1
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077
+Depends: uikittools, com.tigisoftware.filza | com.tigisoftware.filza64bit
+Filename: ./deb/com.Happy0853077.fzo_0.0-1_iphoneos-arm64.deb
+Size: 944
+MD5sum: 084375f02f1dcb26b69aa60e238f3d4d
+SHA1: 693bc56090057b94e6dc3e2202050561b0731724
+SHA256: 5fbe9986e30d3a9b0b75f68a764b754d20fe23457e9472034557a78c6705fa6c
+Section: Terminal_Support
+Priority: optional
+Description: open path in filza
+
+Package: com.Happy0853077.imd
+Version: 0.0.6
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077
+Depends: bash
+Filename: ./deb/com.Happy0853077.imd_0.0.6_iphoneos-arm64.deb
+Size: 1264
+MD5sum: cf158140f011596edfaedc2ab2943bfc
+SHA1: 1a14f2d2236d249ea131f6d57e612ab9744b653e
+SHA256: 97c6005fad051894770c9621f60bf56facf3a889b6ea35681618dfb4a74a29c4
+Section: Terminal_Support
+Priority: optional
+Description: install latest debs in /var/mobile/Documents
+Name: imd
+
+Package: com.happy0853077.cpps
+Version: 1.2-0
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: clang, ldid
+Filename: ./deb/com.happy0853077.cpps_1.2-0_iphoneos-arm64.deb
+Size: 14376
+MD5sum: efea747db3876e700bac561787580362
+SHA1: 0e805385fe52cd1a90156d2f42322f53bd7a17af
+SHA256: c6c3771e16308de8f4621380117894a69a9551f5cb58802e2d215c3912727704
+Section: Terminal_Support
+Priority: optional
+Description: conveniently compile and sign
+ cpps is a command line tool to compile and sign your source code
+ it will automatically choose proper compiler and sign with ldid
+
+Package: com.happy0853077.d2u
+Version: 1.0.2
+Architecture: all
+Maintainer: Happy0853077
+Depends: coreutils
+Filename: ./deb/com.happy0853077.d2u_1.0.2_all.deb
+Size: 1056
+MD5sum: 162b594e05b3389b663b1e33919c86dc
+SHA1: 810ff818a92226db2b2e5fe8821ff1ff7c65e160
+SHA256: d0c77de4e096e6a1d70bd773ef7d6e18de1d4dcdba65e3cbe479713d39977e88
+Section: Terminal_Support
+Priority: optional
+Description: date to unix timestamp
+
+Package: com.happy0853077.gacp
+Version: 1.1-0
+Architecture: iphoneos-arm64
+Maintainer: happy08530777@gmail.com
+Depends: git
+Filename: ./deb/com.happy0853077.gacp_1.1-0_iphoneos-arm64.deb
+Size: 976
+MD5sum: c9e5bfa647e8f8b09cc726c85e338895
+SHA1: 89fc381ebce8c4aeee04df17a3e45d978016b412
+SHA256: 7d69eaf913097a46a9f18ad875725b9169ff27dc739052c9ffdeed57fa4c5f10
+Section: Terminal_support
+Description: do git add, git commit and git push within one command
+Author: happy0853077
+
+Package: com.happy0853077.mobileassettmp
+Version: 1.0.1
+Architecture: iphoneos-arm64
+Maintainer: happy08530777@gmail.com
+Filename: ./deb/com.happy0853077.mobileassettmp_1.0.1_iphoneos-arm64.deb
+Size: 924
+MD5sum: dcffb40cc56cc770388502d34990b9f1
+SHA1: a1b9411bbf0950844f9b1e62bdeed02fe3451926
+SHA256: 7032408b7a8c2e2d008cc283cbd28156257c956294178672f6575f36599432eb
+Section: Addons
+Description: 解决系统更新缓存垃圾的问题
+Author: happy0853077
+Name: Reality MobileAsset tmp
+
+Package: com.happy0853077.mobileassettmp
+Version: 1.1-0
+Architecture: iphoneos-arm64
+Maintainer: happy08530777@gmail.com
+Filename: ./deb/com.happy0853077.mobileassettmp_1.1-0_iphoneos-arm64.deb
+Size: 1124
+MD5sum: f6fd16ba87c2e258671a32e002c46451
+SHA1: 32529225a035a510ce583ef72dd747c73fd68592
+SHA256: 8a5ecd645bd8ad24abf31dff4eec353380e9df6e71e93837c1709354a47f597e
+Section: Addons
+Description: 解决系统更新缓存垃圾的问题
+Author: happy0853077
+Name: Reality MobileAsset tmp
+
+Package: com.happy0853077.pbk
+Version: 1.1-2
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Filename: ./deb/com.happy0853077.pbk_1.1-2_iphoneos-arm64.deb
+Size: 14044
+MD5sum: 192d91f2ebd70ff3c328d852d097336d
+SHA1: ab2692887f5549a13e6215d931e3f1b39a2cfab1
+SHA256: 6605dd0f598d9fccbc390977b1b29bcc218302eada4f5b49d1ab349f92a969e1
+Section: Terminal_Support
+Priority: optional
+Description: pbk is a tool to backup your preferences data in /var/mobile/Library/Preferences and in /var/jb/var/mobile/Library/Preferences
+
+Package: com.happy0853077.realityphototmp
+Version: 1.1.0
+Architecture: iphoneos-arm64
+Maintainer: happy08530777@gmail.com
+Filename: ./deb/com.happy0853077.realityphototmp_1.1.0_iphoneos-arm64.deb
+Size: 8428
+MD5sum: d61e5ced6ae7cd69487cb2f22b0d02d6
+SHA1: 7d8e94e19724b518c2f26d7b744093a4b8177530
+SHA256: 19fde9f6c9127d13e6d7c64aad753f3f021bd94dbc159c0121233da1a993d6fc
+Section: Addons
+Description: 解决照片缓存垃圾的问题
+Author: happy0853077
+Name: Reality photo tmp
+
+Package: com.happy0853077.realityphototmp
+Version: 1.2.0
+Architecture: iphoneos-arm64
+Maintainer: happy08530777@gmail.com
+Filename: ./deb/com.happy0853077.realityphototmp_1.2.0_iphoneos-arm64.deb
+Size: 916
+MD5sum: 2e22ca96f19f0a2c1464a4cf6d57696c
+SHA1: e3778eac781dcea99412e904a73b9d1f1d03510c
+SHA256: 82ec1f84ff9050fb53bcb004a60d85971947fa815e2c74522313aca7786dfd77
+Section: Addons
+Description: 解决照片缓存垃圾的问题
+Author: happy0853077
+Name: Reality photo tmp
+
+Package: com.happy0853077.realityphototmp
+Version: 1.3-0
+Architecture: iphoneos-arm64
+Maintainer: happy08530777@gmail.com
+Filename: ./deb/com.happy0853077.realityphototmp_1.3-0_iphoneos-arm64.deb
+Size: 1152
+MD5sum: aa97b1a72a204cdbbc3e896523f9865b
+SHA1: d44369af26b68ccf1574945a3f6b677366cd7664
+SHA256: 607f127750e33963bb17720a9c4f521a68320e0e55252a2b05725d98723106ca
+Section: Addons
+Description: 解决照片缓存垃圾的问题
+Author: happy0853077
+Name: Reality photo tmp
+
+Package: com.happy0853077.savedeb
+Version: 1.3-1
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: coreutils
+Filename: ./deb/com.happy0853077.savedeb_1.3-1_iphoneos-arm64.deb
+Size: 1236
+MD5sum: 9522883c6cd0802cd1f36693b214d0e1
+SHA1: 90f577179cc689db2831fb480c2b05f4ad28b851
+SHA256: 43b3e6c1d6adf9cb1887169de1392dbc22ca5ac2ddc69dd4616442664329ff0d
+Section: misc
+Description: save debs in apt cache
+Triggers:
+ interest-noawait /Applications
+ interest-noawait /dev
+ interest-noawait /bin
+ interest-noawait /sbin
+ interest-noawait /usr
+ interest-noawait /private
+ interest-noawait /var
+ interest-noawait /System
+ interest-noawait /Library
+ interest-noawait /etc
+
+Package: com.happy0853077.sdp
+Version: 1.3-0
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: apt, grep, fakeroot
+Filename: ./deb/com.happy0853077.sdp_1.3-0_iphoneos-arm64.deb
+Size: 1180
+MD5sum: 273e5d6bbbff96e8a561e94c6697df5b
+SHA1: e5bb555d01953a9becc3ab3d26c044b828568b18
+SHA256: 9b69b477abbd62c12617f059b8fa3bb06dddd5df33ec58c61937c1cb083efd07
+Section: Terminal_Support
+Priority: optional
+Description: search debian packages easily
+
+Package: com.happy0853077.sdp
+Version: 1.4-1
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: apt, grep
+Recommends: fakeroot
+Filename: ./deb/com.happy0853077.sdp_1.4-1_iphoneos-arm64.deb
+Size: 1240
+MD5sum: c1079a01d2c0786cfcd8b2b977ea717b
+SHA1: aa6ff4ad941c5609da8ef064cc21e833f09412bd
+SHA256: f8ee939bc53957ace6057b3fb6997ee732a640f0d3ca9a9953a2b79a7ef2940d
+Section: Terminal_Support
+Priority: optional
+Description: search debian packages easily
+
+Package: com.happy0853077.signent
+Version: 0.1-3
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Depends: ldid
+Filename: ./deb/com.happy0853077.signent_0.1-3_iphoneos-arm64.deb
+Size: 2776
+MD5sum: 77b3396ab2abf34f7489e20d142bc52e
+SHA1: 7c0534dd9e9d0e555078763885ff0eba5b9fa807
+SHA256: ae2c7a8c15a516afe12d6d15e6abc1654ba77e95188e817e3c26ca6f503032a4
+Section: Terminal_Support
+Priority: optional
+Description: add basic entitlements to machO files with ldid
+
+Package: com.happy0853077.u2d
+Version: 1.0.2
+Architecture: all
+Maintainer: Happy0853077
+Depends: coreutils
+Filename: ./deb/com.happy0853077.u2d_1.0.2_all.deb
+Size: 992
+MD5sum: ff7fb5dbd87f9ea0b1da2a17ebf13436
+SHA1: 3c5784d411c72f3f1b7621a03eca1a7bf97725a7
+SHA256: c0f53972f601ae6a71119f610645b8845867dc2f02ca054053c541412ec1a1ff
+Section: Terminal_Support
+Priority: optional
+Description: unix timestamp to date
+
+Package: com.nahtedetihw.closeall
+Version: 1.0-fixed
+Architecture: iphoneos-arm64
+Maintainer: Ethan Whited, Happy0853077
+Installed-Size: 208
+Filename: ./deb/com.nahtedetihw.closeall_1.0-fixed_iphoneos-arm64.deb
+Size: 21868
+MD5sum: b7d3ae3effb50ecddac42591915da38f
+SHA1: 4ec1416f8d80438ac4edc91b720ff5f1a53d584d
+SHA256: bf5a7a23cffd0f9a2ce0357b547db3a7df2ffd14b14e17bd49e7ae6af1a06bb9
+Section: Tweaks
+Description: An awesome MobileSubstrate tweak!
+ fixed the issue where the package can't be installed if the real path of /var/jb/var/mobile/Library/Preferences is /var/mobile/Library/Preferences
+Author: Ethan Whited
+Name: CloseAll
+
+Package: lazygit
+Version: 0.48.0
+Architecture: iphoneos-arm64
+Maintainer: Happy0853077 <happy08530777@gmail.com>
+Installed-Size: 21068112
+Depends: libiosexec1 (>= 1.2.2)
+Filename: ./deb/lazygit_0.48.0_iphoneos-arm64.deb
+Size: 4813000
+MD5sum: 4f95a2ce1c8b98ceb29b0529d5fb87e3
+SHA1: ef656ac7b76c74b87712c4435ff9c984eebcc3ce
+SHA256: 8e27d18a748c79bafee9e89693c0e0c7924355e52992afcb4aa6168e833cc180
+Section: Utilities
+Priority: optional
+Description: lazygit is a fast and lightweight TUI for Git.
+ It simplifies common Git operations with an intuitive interface, making commit, branch, and stash management easier.
+
+Package: uu
+Version: 0.0.3
+Architecture: all
+Maintainer: Happy0853077
+Depends: uuid
+Filename: ./deb/uu_0.0.3_all.deb
+Size: 840
+MD5sum: 8ef9f28e687408da4a9c0762985271a8
+SHA1: 689fe07e301eb4f77c3b55aaf94be7f81c06ea28
+SHA256: 85dca213af4a43d14bad7e5278af31ef351ca311e21514b82cfd9e249e8fa925
+Section: Terminal_Support
+Priority: optional
+Description: output uuid v4 quickly
+
+Package: zp.cocoatop65.unject
+Version: 3.1.1
+Architecture: iphoneos-arm64
+Maintainer: zp, SXX, Domo, Happy0853077
+Installed-Size: 504
+Filename: ./deb/zp.cocoatop65.unject_3.1.1_iphoneos-arm64.deb
+Size: 139156
+MD5sum: e088004743942dc020516cf55866143f
+SHA1: 5e4676dd3360c775dc65ba869969e9cfc148b947
+SHA256: d773dc990acbd07c25695edcee141c700c8a54be5a4270612cd1058b304780a1
+Section: Utilities
+Description: Process Viewer for iOS GUI,适配rootless并增加一些小功能.
+ - 1.长按图标的插件针对APP更友好
+ - 2.此app更适合屏蔽进程类的注入
+ - 3.laileld要加的copy给加上(如果是/开头,使用filza打开)
+ - 4.由Happy085修改使其和原版cocoatop共存
+Author: Domo, SXX , zp
+Name: CocoaTop65.zp
+Sileodepiction: https://rootless.002599.xyz/web/zp.cocoatop64.unject
+

@@ -1,12 +1,15 @@
 const ScriptName = 'duolingo-modifier';
 
+const get_boost = true; // 获取3倍经验buff
+const enable_beta = false; // 启用beta版功能
+
 console.log('url: ' + $request.url);
-batch_modifier();
+main();
 
 
-function batch_modifier() {
+function main() {
 
-    console.log('modifying batch data');
+    console.log('modifying data');
 
     const body = JSON.parse($response.body);
     const userdata = JSON.parse(body.responses[0].body);
@@ -39,8 +42,6 @@ function batch_modifier() {
                 userdata.shopItems[i].purchaseDate = timestamp - 172800;
                 userdata.shopItems[i].subscriptionInfo.expectedExpiration = timestamp + 31363200;
                 userdata.shopItems[i].subscriptionInfo.productId = shopdata.shopItems[id].productId;
-                userdata.shopItems[i].subscriptionInfo.isFreeTrialPeriod = false;
-                userdata.shopItems[i].subscriptionInfo.isInBillingRetryPeriod = false;
                 userdata.shopItems[i].subscriptionInfo.tier = 'twelve_month';
                 userdata.shopItems[i].subscriptionInfo.type = 'premium';
                 userdata.shopItems[i].subscriptionInfo.renewing = true;
@@ -59,20 +60,19 @@ function batch_modifier() {
                 purchasePrice: 11999,
                 subscriptionInfo: {
                     expectedExpiration: timestamp + 31363200,
-                    isFreeTrialPeriod: false,
-                    isInBillingRetryPeriod: false,
                     productId: shopdata.shopItems[id].productId,
                     renewer: 'APPLE',
                     renewing: true,
                     tier: 'twelve_month',
                     type: 'premium'
+                },
+                familyPlanInfo: {
+                    ownerId: userdata['id'],
+                    secondaryMembers: []
                 }
             });
         }
         userdata.subscriptionConfigs[0] = {
-            vendorPurchaseId: '000000000000000',
-            isInBillingRetryPeriod: false,
-            isInGracePeriod: false,
             pauseStart: timestamp + 31363200,
             pauseEnd: null,
             productId: shopdata.shopItems[id].productId,
@@ -83,27 +83,35 @@ function batch_modifier() {
         console.log('failed');
     }
 
-    console.log('set xp boost');
-    let found;
-    for (let i = 0; i < userdata.shopItems.length; i ++) {
-        if (userdata.shopItems[i].id == 'xp_boost_stackable') {
-            console.log('xp boost found');
-            userdata.shopItems[i].purchaseDate = timestamp;
-            userdata.shopItems[i].expectedExpirationDate = timestamp + 1800;
-            userdata.shopItems[i].xpBoostMultiplier = 3;
-            found = true;
-            break;
+    if (get_boost) {
+        console.log('set xp boost');
+        let found;
+        for (let i = 0; i < userdata.shopItems.length; i ++) {
+            if (userdata.shopItems[i].id == 'xp_boost_stackable') {
+                console.log('xp boost found');
+                userdata.shopItems[i].purchaseDate = timestamp;
+                userdata.shopItems[i].expectedExpirationDate = timestamp + 3600;
+                userdata.shopItems[i].xpBoostMultiplier = 3;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            console.log('add boost');
+            userdata.shopItems.push({
+                id: 'xp_boost_stackable',
+                purchaseDate: timestamp,
+                expectedExpirationDate: timestamp + 3600,
+                purchasePrice: 0,
+                xpBoostMultiplier: 3
+            });
         }
     }
-    if (!found) {
-        console.log('add boost');
-        userdata.shopItems.push({
-            id: 'xp_boost_stackable',
-            purchaseDate: timestamp,
-            expectedExpirationDate: timestamp + 1800,
-            purchasePrice: 0,
-            xpBoostMultiplier: 3
-        });
+
+    if (enable_beta) {
+        console.log('enable beta');
+        userdata.betaStatus = 'ELIGIBLE';
+        userdata.trackingProperties.beta_enrollment_status = 'ELIGIBLE';
     }
 
     console.log('set subscribe');

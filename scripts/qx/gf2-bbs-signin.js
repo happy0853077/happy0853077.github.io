@@ -1,6 +1,6 @@
 const ScriptName = "gf2-bbs-signin";
 
-const timeout = 10000; // 时间限制(ms)
+const timeout = 7000; // 时间限制(ms)
 const retry_interval = 1000; // 失败自动重试间隔时间(ms)
 const retry_times = 3; // 失败自动重试次数
 
@@ -28,15 +28,17 @@ async function main() {
 
     for (let account of Object.keys(accounts)) {
         for (let i = 0; i < retry_times; i ++) {
-            const result = await signin(account, accounts[account]);
-            if (Array.isArray(result) && result[0] === 0) {
+            const result = await signinTimeout(timeout, account, accounts[account]);
+            if (Array.isArray(result)) {
                 $notify(ScriptName, result[1], result[2], {"open-url":"https://gf2-bbs.exiliumgf.com"});
-                break;
+                if (result[0] === 0) {
+                    break;
+                }
             }
             await sleep(retry_interval);
-            if (i == retry_times - 1) {
+            if (i === retry_times - 1) {
                 console.log(`${account} failed`);
-                $notify(ScriptName, `❌账号${account}签到失败`, '请重试');
+                $notify(ScriptName, `❌账号${account}签到失败`, '超出失败次数限制');
                 break;
             }
             console.log(`${account} retrying ${i + 1} times`);
@@ -47,30 +49,34 @@ async function main() {
 }
 
 
+async function signinTimeout(timeout, account, passwd) {
+
+    return Promise.race([
+        signin(account, passwd),
+        new Promise((_, reject) => 
+            setTimeout(() => [1, `🚫账号${account}签到失败！`, `错误：运行超时`], timeout)
+        )
+    ]);
+}
+
+
 async function signin(account, passwd) {
 
-    let finish = false;
     let code;
 
-    sleep(timeout).then(() => {
-        if (!finish) {
-            console.log(`${account} timeout`);
-            return [1, `❌账号${account}签到失败`, '运行超时'];
-        }
-    });
+    try {
 
-    console.log(`${account} start`);
-    sign: {
-        try {
+        console.log(`${account} start`);
+        sign: {
 
             let url = 'https://gf2-bbs-api.exiliumgf.com';
             let request = {
                 url: `${url}/login/account`,
                 method: 'POST',
                 headers: {},
-                body: `{"account_name":"${account}","passwd":"${passwd}","source":"phone"}`
+                body: `{"account_name":"${account}","passwd":"${passwd}","source":"phone"}`,
+                timeout: 1000
             };
-
             const token_resp = await $task.fetch(request);
             const token_data = JSON.parse(token_resp.body);
             console.log(`token ${token_resp.statusCode} ${token_data.Code}`);
@@ -89,7 +95,7 @@ async function signin(account, passwd) {
             url += "/community";
             request.url = `${url}/task/get_current_sign_in_status`;
             request.method = 'GET';
-            request.headers = { 'Authorization': token_data.data.account.token };
+            request.headers.Authorization = token_data.data.account.token;
             request.body = '';
 
             const status_resp = await $task.fetch(request);
@@ -132,6 +138,7 @@ async function signin(account, passwd) {
             console.log(`tasklist ${tasklist_resp.statusCode} ${tasklist_data.Code}`);
 
             const actions = ['', 'like/', 'share/'];
+            const taskreward = [15, 10, 5];
 
             for (let i = 0; i < tasklist_data.data.daily_task.length; i ++) {
                 let topics = [];
@@ -152,6 +159,7 @@ async function signin(account, passwd) {
                     const topic_data = JSON.parse(topic_resp.body);
                     console.log(`${actions[i]} ${topics[0]} ${topic_resp.statusCode} ${topic_data.Code}`);
                     topics.shift();
+                    reward['社区经验'] = '社区经验' in reward ? reward['社区经验'] + taskreward[i] : taskreward[i];
                 }
             }
             console.log(`task finished`);
@@ -162,30 +170,39 @@ async function signin(account, passwd) {
             let exchangelist_data = JSON.parse(exchangelist_resp.body);
             console.log(`exchangelist ${exchangelist_resp.statusCode} ${exchangelist_data.Code}`);
 
+            if (exchangelist_resp.statusCode != 200) {
+                console.log('get exchange list failed');
+                throw new Error('获取兑换列表失败');
+            }
+
             for (let i = 0; i < exchangelist_data.data.list.length; i ++) {
                 while (exchangelist_data.data.list[i].exchange_count < exchangelist_data.data.list[i].max_exchange_count) {
 
                     request.url = `${url}/item/exchange`;
                     request.method = 'POST';
-                    request.body = `{"exchange_id":${i + 1}}`;
+                    request.body = `{"exchange_id":${exchangelist_data.data.list[i].exchange_id}}`;
 
                     const exchange_resp = await $task.fetch(request);
                     const exchange_data = JSON.parse(exchange_resp.body);
-                    console.log(`exchange ${i + 1}  ${exchange_resp.statusCode} ${exchange_data.Code}`);
+                    console.log(`exchange ${exchangelist_data.data.list[i].exchange_id}  ${exchange_resp.statusCode} ${exchange_data.Code}`);
 
                     if (exchange_data.Code == 0) {
                         reward[exchangelist_data.data.list[i].item_name] = exchangelist_data.data.list[i].item_name in reward ? reward[exchangelist_data.data.list[i].item_name] + exchangelist_data.data.list[i].item_count : exchangelist_data.data.list[i].item_count;
                         exchangelist_data.data.list[i].exchange_count ++;
+                    } else if  (exchange_resp.statusCode != 200) {
+                        await sleep(1000);
                     }
+                    await Promise.resolve();
                 }
             }
             console.log(`exchange finished`);
 
             code = Object.keys(reward).length > 0 ? [0, notifybody, `获得 ${Object.entries(reward).map(([item, quantity]) => `${item}*${quantity}`).join(' ')}`] : [0, '', notifybody];
-        } catch (error) {
-            console.log(error);
-            code = [1, `🚫账号${account}签到失败！`, `错误：${error}`];
         }
+    } catch (error) {
+        console.log(error);
+        code = [1, `🚫账号${account}签到失败！`, `错误：${error}`];
+        return code;
     }
 
     finish = true;
@@ -212,5 +229,5 @@ function savetoken() {
 
 
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

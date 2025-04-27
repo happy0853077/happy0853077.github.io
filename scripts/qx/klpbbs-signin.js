@@ -1,9 +1,10 @@
 const ScriptName = "klpbbs-signin";
 
-new Promise(resolve => setTimeout(resolve, 10000)).then(()=>{
-    $notify(ScriptName, '❌签到失败', '运行超时，请重试');
-    $done();
-});
+
+const times = 3;
+const interval = 1000;
+const timeout = 7000;
+
 
 if ($environment.executor == 'rewrite-request-body') {
     saveaccount();
@@ -16,6 +17,29 @@ if ($environment.executor == 'rewrite-request-body') {
 
 
 async function main() {
+    for (let i = 0; i < times; i ++) {
+        if (await signTimeout() == 0) {
+            $done();
+        } else {
+            console.log((i + 1) + ' failed');
+        }
+        await sleep(interval);
+    }
+    $notify(ScriptName, '❌签到失败', '运行超时，请重试');
+    $done();
+}
+
+async function signTimeout() {
+
+    return Promise.race([
+        sign(),
+        new Promise((_, reject) => 
+            setTimeout(() => 1, timeout)
+        )
+    ]);
+}
+
+async function sign() {
 
     const user = JSON.parse($prefs.valueForKey('klpbbs-user'));
     const username = user['username'];
@@ -28,11 +52,12 @@ async function main() {
     };
 
     if (!username || !password) {
-        $notify(ScriptName, "❌无法签到", "请登录获取账号", {'open-url': 'https://klpbbs.com/'});
+        $notify(ScriptName, "❌未获取账号", "请登录论坛获取账号", {'open-url': 'https://klpbbs.com/'});
         $done();
     }
 
-    await new Promise(resolve => setTimeout(resolve, 50));
+    console.log(Date.now() / 1000);
+    await new Promise(resolve => setTimeout(resolve, 100));
 
     let formhash;
     try {
@@ -71,7 +96,7 @@ async function main() {
         if (signInResponse.statusCode === 200) {
 
             if (signInResponse.body.includes('<root><![CDATA[')) {
-                const messageRegex = /CDATA\[(.*?)\]/
+                const messageRegex = /CDATA\[([\s\S]*?)\]/
                 const errmsg = signInResponse.body.match(messageRegex);
 
                 if (errmsg[1] == '今日已签') {
@@ -91,7 +116,8 @@ async function main() {
 
                 request.url = "https://klpbbs.com/member.php?mod=logging&action=logout&formhash=" + formhash;
                 await $task.fetch(request);
-                $done();
+                finish = true;
+                return 0;
             }
 
             const rewardRegex = /奖励 (\d+)粒铁粒 和 (\d+)EP/;
@@ -100,9 +126,8 @@ async function main() {
             let reward = signInResponse.body.match(rewardRegex);
             let days = signInResponse.body.match(streakRegex);
             let rank = signInResponse.body.match(rankRegex);
-            console.log(`${reward[0]}  ${days[0]}  ${rank[0]}`);
 
-            $notify(ScriptName, "✅签到成功", `连续签到${days[1]}天，今日排名${rank[1]}，获得铁粒${reward[1]}粒，经验${reward[2]}EP`, action);
+            $notify(ScriptName, "✅签到成功", `连续签到${days[1]}天，今日排名${rank[1]}，获得${reward[1]}铁粒，经验${reward[2]}EP`, action);
 
             if (days[1] === 1) {
                 $notify(ScriptName, '⚠️昨日未签到', '请及时补签', action);
@@ -118,9 +143,11 @@ async function main() {
     } catch (error) {
         console.log(error);
         $notify(ScriptName, "❌签到失败", '错误：' + error.message);
+        finish = true;
+        return 1;
     }
 
-    $done();
+    return 0;
 }
 
 function saveaccount() {
@@ -136,10 +163,14 @@ function saveaccount() {
         console.log(user);
         $prefs.setValueForKey(user, "klpbbs-user");
 
-        $notify(ScriptName, '✅获取账号密码成功', `${matched[1]}: ${matched[2]}`);
+        $notify(ScriptName, '✅获取账号密码成功', `${matched[1]}: ${matched[2].slice(0, 2) + '*'.repeat(matched[2].length - 4) + matched[2].slice(-2)}`);
     } else {
         $notify(ScriptName, '', '⚠️获取账号失败');
     }
 
     $done();
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, timeout));
 }

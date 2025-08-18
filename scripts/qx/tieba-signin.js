@@ -3,9 +3,9 @@
 脚本为串行执行，通过设定batchSize的值<int>，实现每批多少个贴吧并行签到一次。
 */
 const scriptName = 'tieba-signin';
-const batchSize = 20;
-const retries = 10; // 签到失败重试次数
-const interval = 3000; // 每次重试间隔
+const batchSize = 15;
+const retries = 150; // 签到失败重试次数
+const interval = 6000; // 每次重试间隔
 const tiebaCookieKey = 'tieba_signin_cookie';
 const tiebeGetCookieRegex1 = /https?:\/\/(c\.tieba\.baidu\.com|180\.97\.\d+\.\d+)\/c\/s\/login/;
 const tiebeGetCookieRegex2 = /^https?:\/\/c\.tieba\.baidu\.com\/c\/s\/channelIconConfig/;

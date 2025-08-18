@@ -53,7 +53,14 @@ if (cgiData.type === "gray" || cgiData.type === "newgray" || cgiData.type === "e
     }
 } else if (cgiData.type === "block") {
     !(async () => {
-        let url = cgiData.btns[0].url.replace("newreadtemplate", "redirecthelpcgi");
+        if (links in cgiData) {
+            let url = cgiData.links[0].url.replace("newreadtemplate", "redirecthelpcgi");
+        } else if (btns in cgiData) {
+            let url = cgiData.btns[0].url.replace("newreadtemplate", "redirecthelpcgi");
+        } else {
+            console.log('link not found');
+            $done();
+        }
         if (!/exportkey=(.+)/.test(url)) {
             if (wechatExportKey) {
                 url += wechatExportKey;
@@ -62,13 +69,25 @@ if (cgiData.type === "gray" || cgiData.type === "newgray" || cgiData.type === "e
             }
         }
         await get(url).then((resp) => {
+            console.log(resp.body);
             let obj = JSON.parse(resp.body);
             if (obj.hasOwnProperty("btns")) {
                 let trueURL = decodeURIComponent(/url=([a-zA-Z0-9+/=]*)/.exec(obj.btns[0].url)[1]).replace(/&block_?type(.*)/, "");
                 trueURL = trueURL.includes(".") ? trueURL : Base64.decode(trueURL);
                 trueURL = trueURL.indexOf("http") == 0 ? trueURL : "http://" + trueURL;
                 console.log(trueURL);
-                $notify("", "点击跳转到浏览器打开", trueURL, {"open-url":trueURL});
+                if (forceRedirect) {
+                    await $task.fetch({
+                        url: trueURL,
+                        headers: $request.headers,
+                        method: 'GET',
+                        body: ''
+                    }).then((resp) => {
+                        $done(resp.body);
+                    });
+                } else {
+                    $notify("", "点击跳转到浏览器打开", trueURL, {"open-url":trueURL});
+                }
             }
         });
         $done();

@@ -24,10 +24,12 @@ async function main() {
         $done();
     }
 
+    console.log(accounts);
     accounts = JSON.parse(accounts);
 
     for (let account of Object.keys(accounts)) {
         for (let i = 0; i < retry_times; i ++) {
+
             const result = await signinTimeout(timeout, account, accounts[account]);
             if (Array.isArray(result)) {
                 $notify(ScriptName, result[1], result[2], {"open-url":"https://gf2-bbs.exiliumgf.com"});
@@ -35,6 +37,7 @@ async function main() {
                     break;
                 }
             }
+
             await sleep(retry_interval);
             if (i === retry_times - 1) {
                 console.log(`${account} failed`);
@@ -44,6 +47,7 @@ async function main() {
             console.log(`${account} retrying ${i + 1} times`);
         }
     }
+
     console.log("all finished");
     $done();
 }
@@ -115,7 +119,6 @@ async function signin(account, passwd) {
 
                 if (sign_data.Code == 0) {
                     notifybody = `✅账号${account}签到成功！`;
-                    reward['社区经验'] = sign_data.data.get_exp;
                     reward[sign_data.data.get_item_name] = sign_data.data.get_item_count;
                 } else {
                     notifybody = `🚫账号${account}签到失败！错误： ${sign_data.Code}`;
@@ -138,7 +141,6 @@ async function signin(account, passwd) {
             console.log(`tasklist ${tasklist_resp.statusCode} ${tasklist_data.Code}`);
 
             const actions = ['', 'like/', 'share/'];
-            const taskreward = [15, 10, 5];
 
             for (let i = 0; i < tasklist_data.data.daily_task.length; i ++) {
                 let topics = [];
@@ -159,7 +161,6 @@ async function signin(account, passwd) {
                     const topic_data = JSON.parse(topic_resp.body);
                     console.log(`${actions[i]} ${topics[0]} ${topic_resp.statusCode} ${topic_data.Code}`);
                     topics.shift();
-                    reward['社区经验'] = '社区经验' in reward ? reward['社区经验'] + taskreward[i] : taskreward[i];
                 }
             }
             console.log(`task finished`);
@@ -187,7 +188,7 @@ async function signin(account, passwd) {
                     console.log(`exchange ${exchangelist_data.data.list[i].exchange_id}  ${exchange_resp.statusCode} ${exchange_data.Code}`);
 
                     if (exchange_data.Code == 0) {
-                        reward[exchangelist_data.data.list[i].item_name] = exchangelist_data.data.list[i].item_name in reward ? reward[exchangelist_data.data.list[i].item_name] + exchangelist_data.data.list[i].item_count : exchangelist_data.data.list[i].item_count;
+                        reward[exchangelist_data.data.list[i].item_name] = (reward[exchangelist_data.data.list[i].item_name] ?? 0) + exchangelist_data.data.list[i].item_count;
                         exchangelist_data.data.list[i].exchange_count ++;
                     } else if  (exchange_resp.statusCode != 200) {
                         await sleep(1000);
@@ -205,7 +206,6 @@ async function signin(account, passwd) {
         return code;
     }
 
-    finish = true;
     console.log(`${account} finished\n`);
     return code;
 }
@@ -217,12 +217,13 @@ function savetoken() {
     let accounts = $prefs.valueForKey("gf2-bbs-accounts");
     accounts = accounts == null ? JSON.parse("{}") : JSON.parse(accounts);
 
-    console.log(JSON.stringify(accounts) + "\n\n" + JSON.stringify(account));
+    console.log(JSON.stringify(accounts));
+    console.log(JSON.stringify(account));
 
-    accounts[account["account_name"]] = account["passwd"];
+    accounts[account.account_name] = account.passwd;
 
     $prefs.setValueForKey(JSON.stringify(accounts), "gf2-bbs-accounts");
-    $notify(ScriptName, "获取账号成功！请勿泄漏", account["account_name"] + ": " + account["passwd"]);
+    $notify(ScriptName, "✳️获取账号成功", account.account_name + ": " + account.passwd);
 
     $done();
 }

@@ -1,7 +1,8 @@
 const ScriptName = 'duolingo-modifier';
 
+
 const get_boost = true; // 获取3倍经验buff
-const enable_beta = false; // 启用beta版功能
+const enable_beta = true; // 启用beta版功能
 
 console.log('url: ' + $request.url);
 main();
@@ -9,23 +10,30 @@ main();
 
 function main() {
 
-    console.log('modifying data');
-
     const body = JSON.parse($response.body);
+
+    if ('etag' in body.responses[0].headers) {
+        console.log('not the data');
+        $done($response.body);
+    }
+
     const userdata = JSON.parse(body.responses[0].body);
     const shopdata = JSON.parse(body.responses[1].body);
+
     const timestamp = Math.floor(Date.now() / 1000);
 
     console.log('time: ' + timestamp);
     console.log('id: ' + userdata.id);
 
-    console.log('set subscription');
+    console.log('modifying data');
+
+    console.log('set premium subscription');
     try {
 
         let id;
         for (let i = 0; i < shopdata.shopItems.length; i ++) {
-            if (shopdata.shopItems[i].id == 'premium_subscription_twelve_month') {
-                console.log('item id: ' + i);
+            if (shopdata.shopItems[i].id == 'premium_subscription_twelve_month_family') {
+                console.log('  item id: ' + i);
                 id = i;
                 break;
             }
@@ -52,7 +60,7 @@ function main() {
         }
 
         if (!found) {
-            console.log('add subscription');
+            console.log('  add subscription');
 
             userdata.shopItems.push({
                 id: 'premium_subscription',
@@ -75,8 +83,10 @@ function main() {
         userdata.subscriptionConfigs[0] = {
             pauseStart: timestamp + 31363200,
             pauseEnd: null,
-            productId: shopdata.shopItems[id].productId,
-            receiptSource: 1
+            productId: `com.duolingo.immersive_family_subscription`,
+            receiptSource: 1,
+            expirationTimestamp: (timestamp + 31363200) * 1000,
+            itemType: "immersive_subscription"
         }
     } catch (e) {
         console.log(e);
@@ -97,7 +107,7 @@ function main() {
             }
         }
         if (!found) {
-            console.log('add boost');
+            console.log('  add xp boost');
             userdata.shopItems.push({
                 id: 'xp_boost_stackable',
                 purchaseDate: timestamp,
@@ -109,24 +119,30 @@ function main() {
     }
 
     if (enable_beta) {
-        console.log('enable beta');
+        console.log('enable beta feature');
         userdata.betaStatus = 'ELIGIBLE';
         userdata.trackingProperties.beta_enrollment_status = 'ELIGIBLE';
     }
 
-    console.log('set subscribe');
+    console.log('set subscribe level');
     userdata.subscriberLevel = 'PREMIUM';
     userdata.trackingProperties.has_item_premium_subscription = true;
     userdata.trackingProperties.has_item_live_subscription = true;
     userdata.trackingProperties.has_item_gold_subscription = true;
+    userdata.trackingProperties.has_item_max_subscription = true;
 
-    console.log('enable heart features');
+    console.log('set unlimited heart');
     userdata.health.unlimitedHeartsAvailable = true;
     userdata.health.eligibleForFreeRefill = true;
 
-    console.log('get timer boost');
+    console.log('set timer boost');
     userdata.timerBoostConfig.hasFreeTimerBoost = true;
-    userdata.timerBoostConfig.timePerBoost = 600;
+    userdata.timerBoostConfig.timePerBoost = 3600;
+    userdata.timerBoostConfig.hasPurchasedTimerBoost = true;
+
+    console.log('misc setups');
+    userdata.shouldPreventMonetizationForSchoolsUser = true;
+    userdata.pushFamilyPlanNudge = false;
 
     body.responses[0].body = JSON.stringify(userdata);
     body.responses[1].body = JSON.stringify(shopdata);

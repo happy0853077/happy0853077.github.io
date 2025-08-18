@@ -7,7 +7,7 @@ const timeout = 7000;
 
 
 if ($environment.executor == 'rewrite-request-body') {
-    saveaccount();
+    saveAccount();
 } else if ($environment.executor == 'cron' || $environment.executor == 'test-purpose') {
     main();
 } else {
@@ -80,7 +80,7 @@ async function sign() {
         request.body = "";
         const loginUrlResponse = await $task.fetch(request);
 
-        const formhashRegex = /name="formhash" value="([0-9a-f]{8})"/;
+        const formhashRegex = /name="formhash" value="([0-9a-f]+)"/;
         const matched = loginUrlResponse.body.match(formhashRegex);
         if (matched && matched[1]) {
             formhash = matched[1];
@@ -150,7 +150,7 @@ async function sign() {
     return 0;
 }
 
-function saveaccount() {
+function saveAccount() {
 
     const body = $request.body;
     console.log(body);
